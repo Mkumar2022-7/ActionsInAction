@@ -1,3 +1,5 @@
+name: My First Workflow
+
 on: 
   push:
     branches: 
