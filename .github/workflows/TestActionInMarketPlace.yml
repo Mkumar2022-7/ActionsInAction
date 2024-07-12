@@ -10,7 +10,7 @@ jobs:
         id: action
         uses: Mkumar2022-7/MyActionInAction@v1.0.0  
         with:
-          who-to-greet: '@Mkumae2022-7'
+          who-to-greet: '@Mkumar2022-7'
           
       - name: Output the answer
-        run: echo "The answer is ${{ steps.action.outputs.answer }}
+        run: echo "The answer is ${{ steps.action.outputs.answer }}"
