@@ -1,5 +1,5 @@
 name: Test Action In Market Place
-on: [workflow_dispatch]
+on: [push]
 
 jobs:
   test:
