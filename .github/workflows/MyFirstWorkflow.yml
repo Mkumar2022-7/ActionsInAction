@@ -13,7 +13,6 @@ jobs:
       - run: echo ":wave; Hello World"
       - name: Checkout
         uses: actions/checkout@v4.1.7
-      - run: |
-          echo "The repository ${{ github.repository }} contains the following files:"
-          tree
+      - run: echo "The repository name is ${{ github.repository }}"
+    
   
