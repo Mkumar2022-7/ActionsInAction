@@ -7,7 +7,7 @@ on:
 
 jobs:
   MyFirstJob:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
       - run: echo ":wave; Hello World"
