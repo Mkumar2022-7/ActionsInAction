@@ -9,7 +9,8 @@ jobs:
     name: 'Snyk Test'
     runs-on: ubuntu-latest
     env: 
-      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      # SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}SNYK
+      SNYK_TOKEN: $(aws secretsmanager get-secret-value --secret-id SNYK_API_TOKEN | jq .SecretString)
        
     steps:
     # Checkout Code
