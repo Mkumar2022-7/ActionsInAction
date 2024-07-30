@@ -13,5 +13,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.7
       - run: echo "The repository name is ${{ github.repository }}"
+      - run: echo $(aws secretsmanager get-secret-value --secret-id "test-secret1")
     
   
