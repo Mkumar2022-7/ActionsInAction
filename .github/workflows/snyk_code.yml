@@ -15,8 +15,8 @@ jobs:
     
        
     steps:
-    - name: check-snyk-token
-      run: aws secretsmanager get-secret-value --secret-id SNYK_API_TOKEN --query 'SecretString' --output text
+    # - name: check-snyk-token
+    #  run: aws secretsmanager get-secret-value --secret-id SNYK_API_TOKEN --query 'SecretString' --output text
 
     - name: Fetch secret from AWS Secrets Manager
       id: fetch-secret
@@ -31,7 +31,6 @@ jobs:
     # Install and Authenticate to Snyk
     - name: Install Snyk & Authenticate
       run: |
-         echo ${SNYK_TOKEN}
          sudo npm install -g snyk
          snyk auth ${SECRET_VALUE}
     # Run Snyk Code
