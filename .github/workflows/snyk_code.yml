@@ -17,6 +17,13 @@ jobs:
     steps:
     - name: check-snyk-token
       run: aws secretsmanager get-secret-value --secret-id SNYK_API_TOKEN --query 'SecretString' --output text
+
+    - name: Fetch secret from AWS Secrets Manager
+      id: fetch-secret
+      run: |
+        secret_value=$(aws secretsmanager get-secret-value --secret-id SNYK_API_TOKEN --query SecretString --output text)
+        echo "SECRET_VALUE=${secret_value}" >> $GITHUB_ENV
+        
     # Checkout Code
     - name: Checkout Code
       uses: actions/checkout@v1
@@ -26,7 +33,7 @@ jobs:
       run: |
          echo ${SNYK_TOKEN}
          sudo npm install -g snyk
-         snyk auth ${SNYK_TOKEN}
+         snyk auth ${SECRET_VALUE}
     # Run Snyk Code
     - name: Run Snyk Code
       run: |
