@@ -24,12 +24,12 @@ jobs:
     # Install and Authenticate to Snyk
     - name: Install Snyk & Authenticate
       run: |
-         sudo npm install -g snyk
+         # sudo npm install -g snyk
          snyk auth ${SECRET_VALUE}
     # Run Snyk Code
     - name: Run Snyk Code
       run: |
-         #snyk code test --sarif
+         # snyk code test --sarif
          snyk code test --sarif-file-output=snyk-sarif-report.sarif
       continue-on-error: true
     - name: Upload SARIF Report
