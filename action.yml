@@ -1,0 +1,37 @@
+name: ' Snyk SAST'
+description: 'SAST'
+
+runs:
+  using: 'composite'
+  steps:
+    
+      # Fetch Snyk Token 
+      - name: Fetch secret from AWS Secrets Manager
+        id: fetch-secret
+        run: |
+          secret_value=$(aws secretsmanager get-secret-value --secret-id SNYK_API_TOKEN --query SecretString --output text)
+          echo "::add-mask::$secret_value"
+          echo "SECRET_VALUE=${secret_value}" >> $GITHUB_ENV
+          
+      # Checkout Code
+      - name: Checkout Code
+        uses: actions/checkout@v4
+  
+      # Install Snyk
+      - name: Install Snyk
+        run: sudo npm install -g snyk
+        
+      # Authenticate Snyk
+      - name: Authenticate Snyk
+        run: snyk auth ${SECRET_VALUE}
+        
+      # Run Snyk Code
+      - name: Run Snyk Code
+        run: snyk code test --sarif-file-output=snyk-sarif-report.sarif
+        
+      # Upload Report
+      - name: Upload SARIF report
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: snyk-sarif-report.sarif
+        if: always()
