@@ -8,5 +8,9 @@ jobs:
     # Configure Environment
     runs-on: self-hosted
     steps:
+    # Checkout Code
+    - name: Checkout Code
+      uses: actions/checkout@v4
+    # Scan with Snyk
     - name: 'Snyk Test'
       uses: ./
