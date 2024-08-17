@@ -17,7 +17,6 @@ runs:
       # Checkout Code
       - name: Checkout Code
         uses: actions/checkout@v4
-        shell: bash
   
       # Install Snyk
       - name: Install Snyk
@@ -40,4 +39,3 @@ runs:
         with:
           sarif_file: snyk-sarif-report.sarif
         if: always()
-        shell: bash
