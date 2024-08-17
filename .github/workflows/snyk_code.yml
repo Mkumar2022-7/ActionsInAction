@@ -18,7 +18,7 @@ jobs:
     - name: check-user
       run: whoami
     - name: Test AWS CLI
-      run: aws sts get-caller-identity
+      run: aws sts get-caller-identity --debug
     # - name: check-snyk-token
     #  run: aws secretsmanager get-secret-value --secret-id SNYK_API_TOKEN --query 'SecretString' --output text
 
