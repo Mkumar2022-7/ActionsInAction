@@ -22,10 +22,10 @@ jobs:
       uses: actions/checkout@v4
 
     # Install Snyk
-    - name: Install Snyk & Authenticate
+    - name: Install Snyk
       run: sudo npm install -g snyk
     # Authenticate Snyk
-    - name: Authenticate
+    - name: Authenticate Snyk
       run: snyk auth ${SECRET_VALUE}
     # Run Snyk Code
     - name: Run Snyk Code
