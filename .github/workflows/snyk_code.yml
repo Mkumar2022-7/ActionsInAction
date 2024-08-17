@@ -32,7 +32,7 @@ jobs:
     # Run Snyk Code
     - name: Run Snyk Code
       run: snyk code test --sarif-file-output=snyk-sarif-report.sarif
-      continue-on-error: true
+    #  continue-on-error: true
     # - name: Upload SARIF Report
     #  uses: actions/upload-artifact@v3
     #  with:
