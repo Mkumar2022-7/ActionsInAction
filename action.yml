@@ -12,22 +12,27 @@ runs:
           secret_value=$(aws secretsmanager get-secret-value --secret-id SNYK_API_TOKEN --query SecretString --output text)
           echo "::add-mask::$secret_value"
           echo "SECRET_VALUE=${secret_value}" >> $GITHUB_ENV
+        shell: bash
           
       # Checkout Code
       - name: Checkout Code
         uses: actions/checkout@v4
+        shell: bash
   
       # Install Snyk
       - name: Install Snyk
         run: sudo npm install -g snyk
+        shell: bash
         
       # Authenticate Snyk
       - name: Authenticate Snyk
         run: snyk auth ${SECRET_VALUE}
+        shell: bash
         
       # Run Snyk Code
       - name: Run Snyk Code
         run: snyk code test --sarif-file-output=snyk-sarif-report.sarif
+        shell: bash
         
       # Upload Report
       - name: Upload SARIF report
@@ -35,3 +40,4 @@ runs:
         with:
           sarif_file: snyk-sarif-report.sarif
         if: always()
+        shell: bash
