@@ -29,5 +29,5 @@ jobs:
     # Run Snyk Code
     - name: Run Snyk Code
       run: |
-         snyk code test  
+         snyk code test -o sarif >snyk-code-test.sarif
       continue-on-error: true
