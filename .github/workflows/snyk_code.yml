@@ -38,7 +38,7 @@ jobs:
         name: snyk-sarif-report
         path: snyk-sarif-report.sarif
     - name: Upload SARIF report
-      uses: github/codeql-action/upload-sarif@v2
+      uses: github/codeql-action/upload-sarif@v3
       with:
         sarif_file: snyk-sarif-report.sarif
 
