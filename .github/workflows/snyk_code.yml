@@ -17,6 +17,10 @@ jobs:
     steps:
     - name: check-user
       run: whoami
+    - name: Set up AWS CLI
+      run: |
+        export AWS_DEFAULT_REGION=us-west-2
+        export AWS_SDK_LOAD_CONFIG=1
     - name: Test AWS CLI
       run: aws sts get-caller-identity --debug
     # - name: check-snyk-token
