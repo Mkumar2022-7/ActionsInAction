@@ -7,7 +7,7 @@ jobs:
   Pipeline-Job:
     # Configure Environment
     name: 'Snyk Test'
-    runs-on: [self-hosted, aws-runner]
+    runs-on: [self-hosted, aws_runner]
         
     steps:
   
